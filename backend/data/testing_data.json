@@ -1,0 +1,976 @@
+{
+  "2025_session1": {
+    "year": 2025,
+    "day": 1,
+    "event": "Pre-Season Testing",
+    "teams": {
+      "Red Bull Racing": {
+        "best_lap": 91.392,
+        "mean_lap": 95.618,
+        "median_lap": 95.012,
+        "total_laps": 20,
+        "compounds": {
+          "HARD": {
+            "best": 92.514,
+            "mean": 96.554,
+            "count": 16
+          },
+          "SOFT": {
+            "best": 91.392,
+            "mean": 91.876,
+            "count": 4
+          }
+        },
+        "drivers": {
+          "VER": {
+            "best": 91.392,
+            "mean": 94.658,
+            "count": 11
+          },
+          "TSU": {
+            "best": 91.86,
+            "mean": 96.791,
+            "count": 9
+          }
+        }
+      },
+      "McLaren": {
+        "best_lap": 91.481,
+        "mean_lap": 94.197,
+        "median_lap": 93.5,
+        "total_laps": 18,
+        "compounds": {
+          "HARD": {
+            "best": 92.493,
+            "mean": 94.094,
+            "count": 8
+          },
+          "SOFT": {
+            "best": 91.481,
+            "mean": 94.28,
+            "count": 10
+          }
+        },
+        "drivers": {
+          "NOR": {
+            "best": 91.698,
+            "mean": 93.276,
+            "count": 8
+          },
+          "PIA": {
+            "best": 91.481,
+            "mean": 94.934,
+            "count": 10
+          }
+        }
+      },
+      "Kick Sauber": {
+        "best_lap": 92.315,
+        "mean_lap": 97.286,
+        "median_lap": 95.863,
+        "total_laps": 31,
+        "compounds": {
+          "HARD": {
+            "best": 94.501,
+            "mean": 98.458,
+            "count": 15
+          },
+          "SOFT": {
+            "best": 92.315,
+            "mean": 96.186,
+            "count": 16
+          }
+        },
+        "drivers": {
+          "BOR": {
+            "best": 92.611,
+            "mean": 98.518,
+            "count": 14
+          },
+          "HUL": {
+            "best": 92.315,
+            "mean": 96.271,
+            "count": 17
+          }
+        }
+      },
+      "Racing Bulls": {
+        "best_lap": 91.755,
+        "mean_lap": 97.596,
+        "median_lap": 97.415,
+        "total_laps": 26,
+        "compounds": {
+          "HARD": {
+            "best": 92.55,
+            "mean": 98.403,
+            "count": 17
+          },
+          "SOFT": {
+            "best": 91.755,
+            "mean": 96.073,
+            "count": 9
+          }
+        },
+        "drivers": {
+          "HAD": {
+            "best": 91.755,
+            "mean": 97.113,
+            "count": 14
+          },
+          "LAW": {
+            "best": 92.461,
+            "mean": 98.16,
+            "count": 12
+          }
+        }
+      },
+      "Alpine": {
+        "best_lap": 92.378,
+        "mean_lap": 97.885,
+        "median_lap": 95.733,
+        "total_laps": 25,
+        "compounds": {
+          "HARD": {
+            "best": 93.639,
+            "mean": 97.686,
+            "count": 20
+          },
+          "SOFT": {
+            "best": 92.378,
+            "mean": 98.68,
+            "count": 5
+          }
+        },
+        "drivers": {
+          "GAS": {
+            "best": 92.378,
+            "mean": 99.296,
+            "count": 11
+          },
+          "COL": {
+            "best": 93.324,
+            "mean": 96.776,
+            "count": 14
+          }
+        }
+      },
+      "Mercedes": {
+        "best_lap": 92.139,
+        "mean_lap": 95.213,
+        "median_lap": 94.782,
+        "total_laps": 18,
+        "compounds": {
+          "HARD": {
+            "best": 93.416,
+            "mean": 95.022,
+            "count": 8
+          },
+          "MEDIUM": {
+            "best": 92.139,
+            "mean": 95.365,
+            "count": 10
+          }
+        },
+        "drivers": {
+          "ANT": {
+            "best": 92.399,
+            "mean": 95.402,
+            "count": 10
+          },
+          "RUS": {
+            "best": 92.139,
+            "mean": 94.976,
+            "count": 8
+          }
+        }
+      },
+      "Aston Martin": {
+        "best_lap": 91.116,
+        "mean_lap": 99.193,
+        "median_lap": 94.384,
+        "total_laps": 19,
+        "compounds": {
+          "MEDIUM": {
+            "best": 92.054,
+            "mean": 99.35,
+            "count": 13
+          },
+          "SOFT": {
+            "best": 91.116,
+            "mean": 98.852,
+            "count": 6
+          }
+        },
+        "drivers": {
+          "ALO": {
+            "best": 91.116,
+            "mean": 99.232,
+            "count": 11
+          },
+          "STR": {
+            "best": 93.034,
+            "mean": 99.14,
+            "count": 8
+          }
+        }
+      },
+      "Ferrari": {
+        "best_lap": 91.266,
+        "mean_lap": 97.989,
+        "median_lap": 95.544,
+        "total_laps": 20,
+        "compounds": {
+          "HARD": {
+            "best": 92.6,
+            "mean": 99.076,
+            "count": 10
+          },
+          "SOFT": {
+            "best": 91.266,
+            "mean": 96.902,
+            "count": 10
+          }
+        },
+        "drivers": {
+          "LEC": {
+            "best": 91.266,
+            "mean": 98.468,
+            "count": 12
+          },
+          "HAM": {
+            "best": 91.48,
+            "mean": 97.27,
+            "count": 8
+          }
+        }
+      },
+      "Williams": {
+        "best_lap": 91.812,
+        "mean_lap": 97.457,
+        "median_lap": 97.035,
+        "total_laps": 14,
+        "compounds": {
+          "HARD": {
+            "best": 93.083,
+            "mean": 94.305,
+            "count": 4
+          },
+          "MEDIUM": {
+            "best": 91.812,
+            "mean": 98.718,
+            "count": 10
+          }
+        },
+        "drivers": {
+          "SAI": {
+            "best": 91.812,
+            "mean": 97.457,
+            "count": 14
+          }
+        }
+      },
+      "Haas F1 Team": {
+        "best_lap": 92.128,
+        "mean_lap": 96.151,
+        "median_lap": 96.492,
+        "total_laps": 22,
+        "compounds": {
+          "HARD": {
+            "best": 93.766,
+            "mean": 96.936,
+            "count": 18
+          },
+          "SOFT": {
+            "best": 92.128,
+            "mean": 92.617,
+            "count": 4
+          }
+        },
+        "drivers": {
+          "OCO": {
+            "best": 92.128,
+            "mean": 96.037,
+            "count": 11
+          },
+          "BEA": {
+            "best": 92.538,
+            "mean": 96.264,
+            "count": 11
+          }
+        }
+      }
+    }
+  },
+  "2025_session2": {
+    "year": 2025,
+    "day": 2,
+    "event": "Pre-Season Testing",
+    "teams": {
+      "Red Bull Racing": {
+        "best_lap": 90.857,
+        "mean_lap": 98.907,
+        "median_lap": 94.197,
+        "total_laps": 14,
+        "compounds": {
+          "MEDIUM": {
+            "best": 92.345,
+            "mean": 103.104,
+            "count": 8
+          },
+          "SOFT": {
+            "best": 90.857,
+            "mean": 93.311,
+            "count": 6
+          }
+        },
+        "drivers": {
+          "VER": {
+            "best": 90.857,
+            "mean": 99.541,
+            "count": 9
+          },
+          "TSU": {
+            "best": 91.708,
+            "mean": 97.767,
+            "count": 5
+          }
+        }
+      },
+      "McLaren": {
+        "best_lap": 90.714,
+        "mean_lap": 96.987,
+        "median_lap": 93.688,
+        "total_laps": 16,
+        "compounds": {
+          "MEDIUM": {
+            "best": 91.716,
+            "mean": 92.464,
+            "count": 6
+          },
+          "SOFT": {
+            "best": 90.714,
+            "mean": 99.7,
+            "count": 10
+          }
+        },
+        "drivers": {
+          "NOR": {
+            "best": 91.197,
+            "mean": 99.678,
+            "count": 7
+          },
+          "PIA": {
+            "best": 90.714,
+            "mean": 94.893,
+            "count": 9
+          }
+        }
+      },
+      "Kick Sauber": {
+        "best_lap": 92.069,
+        "mean_lap": 95.536,
+        "median_lap": 93.364,
+        "total_laps": 12,
+        "compounds": {
+          "MEDIUM": {
+            "best": 93.314,
+            "mean": 93.525,
+            "count": 5
+          },
+          "SOFT": {
+            "best": 92.069,
+            "mean": 96.972,
+            "count": 7
+          }
+        },
+        "drivers": {
+          "BOR": {
+            "best": 92.319,
+            "mean": 97.362,
+            "count": 5
+          },
+          "HUL": {
+            "best": 92.069,
+            "mean": 94.232,
+            "count": 7
+          }
+        }
+      },
+      "Racing Bulls": {
+        "best_lap": 90.846,
+        "mean_lap": 118.876,
+        "median_lap": 121.249,
+        "total_laps": 17,
+        "compounds": {
+          "MEDIUM": {
+            "best": 92.645,
+            "mean": 120.341,
+            "count": 11
+          },
+          "SOFT": {
+            "best": 90.846,
+            "mean": 116.19,
+            "count": 6
+          }
+        },
+        "drivers": {
+          "HAD": {
+            "best": 90.846,
+            "mean": 117.708,
+            "count": 11
+          },
+          "LAW": {
+            "best": 92.645,
+            "mean": 121.017,
+            "count": 6
+          }
+        }
+      },
+      "Alpine": {
+        "best_lap": 92.458,
+        "mean_lap": 98.372,
+        "median_lap": 94.365,
+        "total_laps": 14,
+        "compounds": {
+          "MEDIUM": {
+            "best": 93.539,
+            "mean": 100.112,
+            "count": 5
+          },
+          "SOFT": {
+            "best": 92.458,
+            "mean": 97.406,
+            "count": 9
+          }
+        },
+        "drivers": {
+          "GAS": {
+            "best": 92.458,
+            "mean": 93.706,
+            "count": 6
+          },
+          "COL": {
+            "best": 93.139,
+            "mean": 101.872,
+            "count": 8
+          }
+        }
+      },
+      "Mercedes": {
+        "best_lap": 92.719,
+        "mean_lap": 101.133,
+        "median_lap": 97.411,
+        "total_laps": 11,
+        "compounds": {
+          "MEDIUM": {
+            "best": 92.719,
+            "mean": 101.133,
+            "count": 11
+          }
+        },
+        "drivers": {
+          "ANT": {
+            "best": 92.719,
+            "mean": 96.492,
+            "count": 8
+          },
+          "RUS": {
+            "best": 93.231,
+            "mean": 113.509,
+            "count": 3
+          }
+        }
+      },
+      "Aston Martin": {
+        "best_lap": 90.877,
+        "mean_lap": 98.191,
+        "median_lap": 93.593,
+        "total_laps": 16,
+        "compounds": {
+          "HARD": {
+            "best": 92.253,
+            "mean": 93.615,
+            "count": 7
+          },
+          "SOFT": {
+            "best": 90.877,
+            "mean": 101.749,
+            "count": 9
+          }
+        },
+        "drivers": {
+          "ALO": {
+            "best": 90.877,
+            "mean": 99.141,
+            "count": 9
+          },
+          "STR": {
+            "best": 91.222,
+            "mean": 96.969,
+            "count": 7
+          }
+        }
+      },
+      "Ferrari": {
+        "best_lap": 91.466,
+        "mean_lap": 102.077,
+        "median_lap": 93.203,
+        "total_laps": 13,
+        "compounds": {
+          "MEDIUM": {
+            "best": 91.491,
+            "mean": 100.831,
+            "count": 8
+          },
+          "SOFT": {
+            "best": 91.466,
+            "mean": 104.07,
+            "count": 5
+          }
+        },
+        "drivers": {
+          "LEC": {
+            "best": 91.466,
+            "mean": 100.459,
+            "count": 7
+          },
+          "HAM": {
+            "best": 91.491,
+            "mean": 103.964,
+            "count": 6
+          }
+        }
+      },
+      "Williams": {
+        "best_lap": 91.299,
+        "mean_lap": 98.671,
+        "median_lap": 94.604,
+        "total_laps": 17,
+        "compounds": {
+          "MEDIUM": {
+            "best": 92.306,
+            "mean": 93.62,
+            "count": 7
+          },
+          "SOFT": {
+            "best": 91.299,
+            "mean": 102.206,
+            "count": 10
+          }
+        },
+        "drivers": {
+          "ALB": {
+            "best": 92.06,
+            "mean": 98.98,
+            "count": 7
+          },
+          "SAI": {
+            "best": 91.299,
+            "mean": 98.454,
+            "count": 10
+          }
+        }
+      },
+      "Haas F1 Team": {
+        "best_lap": 91.298,
+        "mean_lap": 92.899,
+        "median_lap": 93.002,
+        "total_laps": 10,
+        "compounds": {
+          "MEDIUM": {
+            "best": 93.245,
+            "mean": 93.856,
+            "count": 5
+          },
+          "SOFT": {
+            "best": 91.298,
+            "mean": 91.942,
+            "count": 5
+          }
+        },
+        "drivers": {
+          "OCO": {
+            "best": 91.298,
+            "mean": 92.905,
+            "count": 6
+          },
+          "BEA": {
+            "best": 91.711,
+            "mean": 92.89,
+            "count": 4
+          }
+        }
+      }
+    }
+  },
+  "2025_session3": {
+    "year": 2025,
+    "day": 3,
+    "event": "Pre-Season Testing",
+    "teams": {
+      "Red Bull Racing": {
+        "best_lap": 90.148,
+        "mean_lap": 97.774,
+        "median_lap": 96.876,
+        "total_laps": 19,
+        "compounds": {
+          "MEDIUM": {
+            "best": 91.358,
+            "mean": 97.998,
+            "count": 14
+          },
+          "SOFT": {
+            "best": 90.148,
+            "mean": 97.148,
+            "count": 5
+          }
+        },
+        "drivers": {
+          "VER": {
+            "best": 90.148,
+            "mean": 97.751,
+            "count": 5
+          },
+          "TSU": {
+            "best": 91.44,
+            "mean": 97.782,
+            "count": 14
+          }
+        }
+      },
+      "McLaren": {
+        "best_lap": 90.165,
+        "mean_lap": 93.651,
+        "median_lap": 93.956,
+        "total_laps": 23,
+        "compounds": {
+          "MEDIUM": {
+            "best": 91.021,
+            "mean": 94.77,
+            "count": 17
+          },
+          "SOFT": {
+            "best": 90.165,
+            "mean": 90.48,
+            "count": 6
+          }
+        },
+        "drivers": {
+          "NOR": {
+            "best": 90.237,
+            "mean": 93.175,
+            "count": 12
+          },
+          "PIA": {
+            "best": 90.165,
+            "mean": 94.171,
+            "count": 11
+          }
+        }
+      },
+      "Kick Sauber": {
+        "best_lap": 90.637,
+        "mean_lap": 95.872,
+        "median_lap": 94.745,
+        "total_laps": 23,
+        "compounds": {
+          "MEDIUM": {
+            "best": 92.86,
+            "mean": 96.936,
+            "count": 19
+          },
+          "SOFT": {
+            "best": 90.637,
+            "mean": 90.819,
+            "count": 4
+          }
+        },
+        "drivers": {
+          "BOR": {
+            "best": 90.697,
+            "mean": 95.626,
+            "count": 12
+          },
+          "HUL": {
+            "best": 90.637,
+            "mean": 96.141,
+            "count": 11
+          }
+        }
+      },
+      "Racing Bulls": {
+        "best_lap": 90.489,
+        "mean_lap": 93.18,
+        "median_lap": 92.85,
+        "total_laps": 11,
+        "compounds": {
+          "MEDIUM": {
+            "best": 91.512,
+            "mean": 93.669,
+            "count": 8
+          },
+          "SOFT": {
+            "best": 90.489,
+            "mean": 91.877,
+            "count": 3
+          }
+        },
+        "drivers": {
+          "HAD": {
+            "best": 90.489,
+            "mean": 93.135,
+            "count": 10
+          },
+          "LAW": {
+            "best": 93.628,
+            "mean": 93.628,
+            "count": 1
+          }
+        }
+      },
+      "Alpine": {
+        "best_lap": 91.047,
+        "mean_lap": 96.694,
+        "median_lap": 94.181,
+        "total_laps": 18,
+        "compounds": {
+          "MEDIUM": {
+            "best": 92.672,
+            "mean": 96.523,
+            "count": 13
+          },
+          "SOFT": {
+            "best": 91.047,
+            "mean": 97.137,
+            "count": 5
+          }
+        },
+        "drivers": {
+          "GAS": {
+            "best": 91.643,
+            "mean": 96.978,
+            "count": 9
+          },
+          "COL": {
+            "best": 91.047,
+            "mean": 96.409,
+            "count": 9
+          }
+        }
+      },
+      "Mercedes": {
+        "best_lap": 90.197,
+        "mean_lap": 90.992,
+        "median_lap": 90.999,
+        "total_laps": 8,
+        "compounds": {
+          "SOFT": {
+            "best": 90.197,
+            "mean": 90.992,
+            "count": 8
+          }
+        },
+        "drivers": {
+          "ANT": {
+            "best": 90.237,
+            "mean": 90.782,
+            "count": 4
+          },
+          "RUS": {
+            "best": 90.197,
+            "mean": 91.201,
+            "count": 4
+          }
+        }
+      },
+      "Aston Martin": {
+        "best_lap": 90.923,
+        "mean_lap": 96.386,
+        "median_lap": 96.238,
+        "total_laps": 19,
+        "compounds": {
+          "MEDIUM": {
+            "best": 91.835,
+            "mean": 97.148,
+            "count": 14
+          },
+          "SOFT": {
+            "best": 90.923,
+            "mean": 94.254,
+            "count": 5
+          }
+        },
+        "drivers": {
+          "ALO": {
+            "best": 90.923,
+            "mean": 99.007,
+            "count": 9
+          },
+          "STR": {
+            "best": 91.26,
+            "mean": 94.028,
+            "count": 10
+          }
+        }
+      },
+      "Ferrari": {
+        "best_lap": 90.559,
+        "mean_lap": 98.518,
+        "median_lap": 94.914,
+        "total_laps": 19,
+        "compounds": {
+          "MEDIUM": {
+            "best": 91.448,
+            "mean": 98.679,
+            "count": 13
+          },
+          "SOFT": {
+            "best": 90.559,
+            "mean": 98.168,
+            "count": 6
+          }
+        },
+        "drivers": {
+          "LEC": {
+            "best": 90.651,
+            "mean": 98.351,
+            "count": 9
+          },
+          "HAM": {
+            "best": 90.559,
+            "mean": 98.668,
+            "count": 10
+          }
+        }
+      },
+      "Williams": {
+        "best_lap": 90.392,
+        "mean_lap": 100.678,
+        "median_lap": 94.284,
+        "total_laps": 25,
+        "compounds": {
+          "SOFT": {
+            "best": 90.392,
+            "mean": 100.678,
+            "count": 25
+          }
+        },
+        "drivers": {
+          "ALB": {
+            "best": 90.668,
+            "mean": 102.465,
+            "count": 13
+          },
+          "SAI": {
+            "best": 90.392,
+            "mean": 98.741,
+            "count": 12
+          }
+        }
+      },
+      "Haas F1 Team": {
+        "best_lap": 90.784,
+        "mean_lap": 95.991,
+        "median_lap": 93.647,
+        "total_laps": 19,
+        "compounds": {
+          "MEDIUM": {
+            "best": 91.689,
+            "mean": 94.156,
+            "count": 13
+          },
+          "SOFT": {
+            "best": 90.784,
+            "mean": 99.966,
+            "count": 6
+          }
+        },
+        "drivers": {
+          "OCO": {
+            "best": 90.784,
+            "mean": 96.162,
+            "count": 8
+          },
+          "BEA": {
+            "best": 90.799,
+            "mean": 95.866,
+            "count": 11
+          }
+        }
+      }
+    }
+  },
+  "2026_bahrain_test2": {
+    "year": 2026,
+    "event": "Bahrain Pre-Season Test 2",
+    "source": "The Race / Crash.net / ESPN",
+    "teams": {
+      "ferrari": {
+        "best_lap": 91.992,
+        "best_lap_formatted": "1:31.992",
+        "best_driver": "Charles Leclerc",
+        "total_laps": 324
+      },
+      "mercedes": {
+        "best_lap": 92.803,
+        "best_lap_formatted": "1:32.803",
+        "best_driver": "Kimi Antonelli",
+        "total_laps": 432
+      },
+      "mclaren": {
+        "best_lap": 92.861,
+        "best_lap_formatted": "1:32.861",
+        "best_driver": "Oscar Piastri",
+        "total_laps": 395
+      },
+      "red_bull": {
+        "best_lap": 93.109,
+        "best_lap_formatted": "1:33.109",
+        "best_driver": "Max Verstappen",
+        "total_laps": 350
+      },
+      "alpine": {
+        "best_lap": 93.421,
+        "best_lap_formatted": "1:33.421",
+        "best_driver": "Pierre Gasly",
+        "total_laps": 340
+      },
+      "rb": {
+        "best_lap": 93.65,
+        "best_lap_formatted": "1:33.650",
+        "best_driver": "Yuki Tsunoda",
+        "total_laps": 407
+      },
+      "haas": {
+        "best_lap": 93.8,
+        "best_lap_formatted": "1:33.800",
+        "best_driver": "Esteban Ocon",
+        "total_laps": 404
+      },
+      "williams": {
+        "best_lap": 93.95,
+        "best_lap_formatted": "1:33.950",
+        "best_driver": "Carlos Sainz",
+        "total_laps": 368
+      },
+      "aston_martin": {
+        "best_lap": 94.1,
+        "best_lap_formatted": "1:34.100",
+        "best_driver": "Fernando Alonso",
+        "total_laps": 128
+      },
+      "sauber": {
+        "best_lap": 94.35,
+        "best_lap_formatted": "1:34.350",
+        "best_driver": "Nico Hulkenberg",
+        "total_laps": 310
+      },
+      "cadillac": {
+        "best_lap": 95.2,
+        "best_lap_formatted": "1:35.200",
+        "best_driver": "TBA",
+        "total_laps": 280
+      }
+    }
+  }
+}

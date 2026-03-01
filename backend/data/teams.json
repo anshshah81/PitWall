@@ -1,0 +1,332 @@
+{
+  "red_bull": {
+    "name": "Red Bull Racing",
+    "short": "RBR",
+    "color": "#3671C6",
+    "base_delta": 1.117,
+    "pit_crew_delta": 0.0,
+    "tire_wear_factor": 1.09,
+    "drivers": {
+      "verstappen": {
+        "name": "Max Verstappen",
+        "number": 3,
+        "pace_delta": 0.0,
+        "tire_management": 0.91,
+        "wet_skill": 0.78,
+        "consistency": 0.84,
+        "overtaking_delta": -0.18,
+        "notes": "4x WDC (2021-24). Generational talent. Brazil 2016/2022 wet masterclasses. Beat every teammate by 0.3s+ avg. Best overtaker on grid — late braking, wheel-to-wheel dominance. Extremely low error rate in races. Tire management improved massively since 2021 (Hungary, Abu Dhabi). 28 years old in 2026."
+      },
+      "hadjar": {
+        "name": "Isack Hadjar",
+        "number": 6,
+        "pace_delta": 0.35,
+        "tire_management": 1.05,
+        "wet_skill": 0.95,
+        "consistency": 1.10,
+        "overtaking_delta": -0.01,
+        "notes": "F2 runner-up 2024. Franco-Algerian. Strong junior pedigree — F3 runner-up, F2 title contender. Rookie season 2026 against the GOAT teammate. Expect 0.3-0.4s deficit typical of rookies vs elite. Decent wet pace in F2 (Silverstone 2024). Will take time to learn tire windows."
+      }
+    }
+  },
+  "ferrari": {
+    "name": "Scuderia Ferrari",
+    "short": "FER",
+    "color": "#E8002D",
+    "base_delta": 0.0,
+    "pit_crew_delta": 0.1,
+    "tire_wear_factor": 1.02,
+    "drivers": {
+      "leclerc": {
+        "name": "Charles Leclerc",
+        "number": 16,
+        "pace_delta": 0.0,
+        "tire_management": 0.97,
+        "wet_skill": 0.91,
+        "consistency": 0.93,
+        "overtaking_delta": -0.08,
+        "notes": "Multi-race winner. Monaco GP winner. Qualifying specialist — one of the fastest single-lap drivers ever. Known to push too hard and degrade tires early (Spain 2022, Silverstone 2022). Wet pace decent but not top tier — fewer standout wet drives than Hamilton/Verstappen. Occasional racing errors (France 2022, Imola 2022) but has matured. Clean aggressive overtaker. 28 years old in 2026."
+      },
+      "hamilton": {
+        "name": "Lewis Hamilton",
+        "number": 44,
+        "pace_delta": 0.08,
+        "tire_management": 0.83,
+        "wet_skill": 0.76,
+        "consistency": 0.87,
+        "overtaking_delta": -0.13,
+        "notes": "7x WDC. All-time wins/poles record holder. THE wet weather benchmark — Silverstone 2008, Turkey 2020, Imola 2021 recovery. Legendary tire whisperer — Turkey 2020 (50+ laps on inters), 2021 multiple extended stints. Extremely consistent race driver, rarely crashes from own error. Elite overtaker throughout 19-year career. 41 years old in 2026 — slight pace decline from peak but experience/racecraft intact. Slight pace deficit to Leclerc in quali expected at this age."
+      }
+    }
+  },
+  "mclaren": {
+    "name": "McLaren",
+    "short": "MCL",
+    "color": "#FF8000",
+    "base_delta": 0.869,
+    "pit_crew_delta": 0.0,
+    "tire_wear_factor": 1.057,
+    "drivers": {
+      "norris": {
+        "name": "Lando Norris",
+        "number": 1,
+        "pace_delta": 0.0,
+        "tire_management": 0.93,
+        "wet_skill": 0.86,
+        "consistency": 0.89,
+        "overtaking_delta": -0.10,
+        "notes": "2025 World Champion. Breakthrough from perennial 'nearly man' to dominant force. Good tire management — extended stints effectively in 2024 title fight. Strong in the wet (Singapore 2024 masterclass) but Russia 2021 gamble gone wrong shows occasional poor rain reads. Consistency improved massively 2024-25 — fewer off-weekends. Overtaking improved with confidence, decisive moves. 26 years old in 2026."
+      },
+      "piastri": {
+        "name": "Oscar Piastri",
+        "number": 81,
+        "pace_delta": 0.06,
+        "tire_management": 0.94,
+        "wet_skill": 0.93,
+        "consistency": 0.91,
+        "overtaking_delta": -0.07,
+        "notes": "F3 champion, F2 champion — won every junior title first attempt. Remarkably mature for his age. Very close to Norris on pace (often within 0.05-0.08s). Excellent tire management for his experience — patient, rarely overdrives. Wet data limited but capable. Extremely consistent — very low error rate, never over-pushes. Clean precise overtaker (Hungary 2024 last-lap pass). 25 years old in 2026."
+      }
+    }
+  },
+  "mercedes": {
+    "name": "Mercedes-AMG",
+    "short": "MER",
+    "color": "#27F4D2",
+    "base_delta": 0.811,
+    "pit_crew_delta": 0.2,
+    "tire_wear_factor": 1.15,
+    "drivers": {
+      "russell": {
+        "name": "George Russell",
+        "number": 63,
+        "pace_delta": 0.0,
+        "tire_management": 0.94,
+        "wet_skill": 0.88,
+        "consistency": 0.90,
+        "overtaking_delta": -0.06,
+        "notes": "Mr Saturday — elite qualifier, regularly outqualified Hamilton. Multiple race wins. Good tire management — learned from Hamilton era. Solid in wet (Hungary 2024 wet quali pole). Very consistent — rarely makes race-ending errors, always finishes in points. Clean but not the most aggressive overtaker — prefers qualifying up front. 28 years old in 2026."
+      },
+      "antonelli": {
+        "name": "Kimi Antonelli",
+        "number": 12,
+        "pace_delta": 0.15,
+        "tire_management": 1.04,
+        "wet_skill": 0.87,
+        "consistency": 1.08,
+        "overtaking_delta": -0.04,
+        "notes": "Youngest F2 race winner ever. Italian prodigy backed by Mercedes since karting. Incredibly fast raw pace — F2/F3 lap times were extraordinary. Known for brilliant wet weather ability from junior series (Spa F2 2024). However, prone to over-driving — Monza 2024 FP1 crash on debut, multiple F2 incidents. Tire management still developing — tends to overdrive in first stint. Second F1 season in 2026, still learning. 20 years old in 2026."
+      }
+    }
+  },
+  "aston_martin": {
+    "name": "Aston Martin",
+    "short": "AMR",
+    "color": "#229971",
+    "base_delta": 2.108,
+    "pit_crew_delta": 0.3,
+    "tire_wear_factor": 1.077,
+    "drivers": {
+      "alonso": {
+        "name": "Fernando Alonso",
+        "number": 14,
+        "pace_delta": 0.0,
+        "tire_management": 0.84,
+        "wet_skill": 0.80,
+        "consistency": 0.86,
+        "overtaking_delta": -0.11,
+        "notes": "2x WDC (2005-06). 400+ race starts — most experienced driver in F1 history. Elite-tier tire management — Malaysia 2012 (45 laps on options), routinely extends stints 5+ laps beyond expected. One of the best wet drivers ever (Fuji 2007, Hungary 2006, Malaysia 2012). Metronomic consistency — almost never crashes from own error in races. Master tactician in wheel-to-wheel combat. 44 years old in 2026 — slight raw pace decline but racecraft/experience unmatched."
+      },
+      "stroll": {
+        "name": "Lance Stroll",
+        "number": 18,
+        "pace_delta": 0.35,
+        "tire_management": 1.10,
+        "wet_skill": 0.92,
+        "consistency": 1.14,
+        "overtaking_delta": 0.05,
+        "notes": "Team owner's son. Has occasional flashes of brilliance but deeply inconsistent. Notable wet talent — Turkey 2020 P3 in qualifying, Monza 2020 podium in tricky conditions. However, tire management is poor — regularly destroys front-left, often pits earlier than expected. Very inconsistent lap-to-lap — can be 0.5s off one lap, then match the leader next. Racecraft widely criticized — poor spatial awareness, incidents with teammates (Vettel). 27 years old in 2026."
+      }
+    }
+  },
+  "alpine": {
+    "name": "Alpine",
+    "short": "ALP",
+    "color": "#FF87BC",
+    "base_delta": 1.429,
+    "pit_crew_delta": 0.4,
+    "tire_wear_factor": 1.035,
+    "drivers": {
+      "gasly": {
+        "name": "Pierre Gasly",
+        "number": 10,
+        "pace_delta": 0.0,
+        "tire_management": 0.95,
+        "wet_skill": 0.90,
+        "consistency": 0.93,
+        "overtaking_delta": -0.05,
+        "notes": "Race winner (Monza 2020). Former Red Bull driver — struggled at top team but rebuilt career brilliantly. Good tire management — consistent stint lengths, rarely falls off cliff. Decent wet pace but not a standout. Consistent points scorer when car allows. Average overtaker — prefers clean air. Will thrive as team leader. 30 years old in 2026."
+      },
+      "colapinto": {
+        "name": "Franco Colapinto",
+        "number": 43,
+        "pace_delta": 0.18,
+        "tire_management": 1.03,
+        "wet_skill": 0.96,
+        "consistency": 1.06,
+        "overtaking_delta": -0.02,
+        "notes": "Impressed as Williams mid-season sub in 2024 — immediately competitive. Argentine. Good raw pace for a driver with limited F1 mileage. Tire management still developing — sometimes overdrives early in stints. Limited wet data. Reasonably consistent but still learning the limits. Clean racer. Effectively a second-year driver in 2026. 23 years old."
+      }
+    }
+  },
+  "rb": {
+    "name": "Racing Bulls",
+    "short": "RB",
+    "color": "#6692FF",
+    "base_delta": 1.658,
+    "pit_crew_delta": 0.3,
+    "tire_wear_factor": 1.05,
+    "drivers": {
+      "lawson": {
+        "name": "Liam Lawson",
+        "number": 30,
+        "pace_delta": 0.0,
+        "tire_management": 0.96,
+        "wet_skill": 0.91,
+        "consistency": 0.95,
+        "overtaking_delta": -0.05,
+        "notes": "Proved himself in cameo stints at AlphaTauri (2023) and RB (2024). New Zealander. Quick, combative — famous for flipping off Perez. Tire management good for his experience — managed stints well in limited appearances. Decent in the wet. Consistent when settled in. Aggressive overtaker, not afraid of anyone. Relatively experienced for his age after Red Bull junior program. 24 years old in 2026."
+      },
+      "lindblad": {
+        "name": "Arvid Lindblad",
+        "number": 41,
+        "pace_delta": 0.25,
+        "tire_management": 1.07,
+        "wet_skill": 0.88,
+        "consistency": 1.12,
+        "overtaking_delta": -0.03,
+        "notes": "British-Swedish. Red Bull junior. Dominant in F3/F2 — won multiple races as a teenager. Considered one of the most talented juniors since Verstappen. Outstanding wet weather ability from karting and junior formulas — genuine rain specialist. Pure rookie in 2026 — expect tire management issues and inconsistency as he learns. Very aggressive racing style, sometimes too much. 18 years old in 2026 — youngest on the grid."
+      }
+    }
+  },
+  "haas": {
+    "name": "Haas F1 Team",
+    "short": "HAA",
+    "color": "#B6BABD",
+    "base_delta": 1.808,
+    "pit_crew_delta": 0.5,
+    "tire_wear_factor": 1.052,
+    "drivers": {
+      "ocon": {
+        "name": "Esteban Ocon",
+        "number": 31,
+        "pace_delta": 0.0,
+        "tire_management": 0.96,
+        "wet_skill": 0.92,
+        "consistency": 0.97,
+        "overtaking_delta": -0.03,
+        "notes": "Race winner (Hungary 2021 opportunistic victory). Former Mercedes junior, Force India, Renault/Alpine. Solid tire management — rarely falls off a cliff. Decent in the wet. Consistency is his weakness — can be brilliant (Hungary 2021) or anonymous. Known for teammate conflicts (Perez, Gasly, Alonso). Defensive rather than aggressive overtaker. Reliable midfield driver. 29 years old in 2026."
+      },
+      "bearman": {
+        "name": "Oliver Bearman",
+        "number": 87,
+        "pace_delta": 0.15,
+        "tire_management": 1.02,
+        "wet_skill": 0.95,
+        "consistency": 1.05,
+        "overtaking_delta": -0.01,
+        "notes": "British. Ferrari Academy. Impressed hugely subbing for Sainz at Ferrari in Jeddah 2024 — P7 on debut. Good adaptability and tire feel for his age. Also drove well for Haas in 2024. Second full season in 2026 — should be settling in. Tire management developing well. Consistency improving. Clean racer, patient approach. 21 years old in 2026."
+      }
+    }
+  },
+  "williams": {
+    "name": "Williams Racing",
+    "short": "WIL",
+    "color": "#64C4FF",
+    "base_delta": 1.958,
+    "pit_crew_delta": 0.4,
+    "tire_wear_factor": 1.024,
+    "drivers": {
+      "albon": {
+        "name": "Alexander Albon",
+        "number": 23,
+        "pace_delta": 0.0,
+        "tire_management": 0.91,
+        "wet_skill": 0.90,
+        "consistency": 0.92,
+        "overtaking_delta": -0.06,
+        "notes": "Thai-British. Former Red Bull driver (2019-20). Rebuilt career at Williams — team leader, development driver. Excellent tire management — routinely runs long stints at Williams, often gains positions through strategy. Good in the wet (Austria 2020, multiple Williams drives). Very consistent — almost always finishes if car allows. Patient, clean overtaker — benefited from offset strategies. 30 years old in 2026."
+      },
+      "sainz": {
+        "name": "Carlos Sainz",
+        "number": 55,
+        "pace_delta": 0.02,
+        "tire_management": 0.88,
+        "wet_skill": 0.87,
+        "consistency": 0.88,
+        "overtaking_delta": -0.09,
+        "notes": "Multi-race winner (Silverstone 2024, Singapore 2023, Australia 2024). Son of rally legend. One of the best tire managers on the grid — Smooth Operator nickname is real. Consistently close to the best (matched Leclerc, outscored Norris at McLaren). Strong in the wet. Extremely consistent and reliable — one of the highest points-per-race averages. Strong decisive overtaker. Would be a #1 driver at most teams. 31 years old in 2026."
+      }
+    }
+  },
+  "audi": {
+    "name": "Audi",
+    "short": "AUD",
+    "color": "#52E252",
+    "base_delta": 2.358,
+    "pit_crew_delta": 0.6,
+    "tire_wear_factor": 1.0,
+    "drivers": {
+      "hulkenberg": {
+        "name": "Nico Hulkenberg",
+        "number": 27,
+        "pace_delta": 0.0,
+        "tire_management": 0.93,
+        "wet_skill": 0.86,
+        "consistency": 0.91,
+        "overtaking_delta": -0.04,
+        "notes": "179 races, 0 podiums — the most famous unwanted record. But consistently fast throughout career. Put Williams on pole in Brazil 2010 in monsoon conditions — genuine wet weather talent. Good tire management — experienced, consistent stint lengths. Very reliable and consistent — rarely crashes. Average overtaker — gets stuck behind but rarely loses positions either. Returned to F1 with Haas in 2024, immediately competitive. 38 years old in 2026."
+      },
+      "bortoleto": {
+        "name": "Gabriel Bortoleto",
+        "number": 5,
+        "pace_delta": 0.20,
+        "tire_management": 1.04,
+        "wet_skill": 0.94,
+        "consistency": 1.07,
+        "overtaking_delta": -0.02,
+        "notes": "Brazilian. F2 champion 2024 as a rookie — extremely impressive. McLaren junior before Audi deal. Quick adapter — won F3 title 2023 then F2 title 2024 in consecutive years. Tire management still learning in F1 — F2 tire behavior is different. Decent wet pace in junior series. Second F1 season in 2026 — should show improvement. Aggressive racing style from F2. 22 years old in 2026."
+      }
+    }
+  },
+  "cadillac": {
+    "name": "Cadillac F1",
+    "short": "CAD",
+    "color": "#FFD700",
+    "base_delta": 3.208,
+    "pit_crew_delta": 0.8,
+    "tire_wear_factor": 1.12,
+    "drivers": {
+      "perez": {
+        "name": "Sergio Perez",
+        "number": 11,
+        "pace_delta": 0.0,
+        "tire_management": 0.84,
+        "wet_skill": 0.82,
+        "consistency": 1.06,
+        "overtaking_delta": -0.07,
+        "notes": "Race winner (Sakhir 2020, Monaco 2022, etc). Mexican. THE tire whisperer — famous for incredible long stints (Turkey 2020 strategy, multiple Red Bull offset strategies). Elite wet weather driver — Turkey 2020 P2 from P16, Sakhir 2020 last-to-first. HOWEVER, major consistency issues since 2023 — huge qualifying swings (sometimes P2, sometimes Q1 elimination). Struggles against top teammates (Verstappen dominated him). Good midfield overtaker. 36 years old in 2026."
+      },
+      "bottas": {
+        "name": "Valtteri Bottas",
+        "number": 77,
+        "pace_delta": 0.10,
+        "tire_management": 0.95,
+        "wet_skill": 0.96,
+        "consistency": 0.91,
+        "overtaking_delta": 0.06,
+        "notes": "10 race wins, all with Mercedes (2017-21). Finnish. Average tire management — neither exceptional nor poor, consistent stint lengths. Not a wet specialist — generally adequate, no standout drives. Very consistent in terms of error avoidance — rarely crashes, reliable points machine when car allows. HOWEVER, famously poor at overtaking — the 'Bottas train' effect. Gets stuck behind slower cars, cannot make moves. Prefers track position from qualifying. 36 years old in 2026."
+      }
+    }
+  }
+}
