@@ -5,7 +5,7 @@ Main API server for F1 race strategy optimization
 
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
-from models.schemas import RaceConfig, OptimizeResponse, TeamInfo, DriverInfo
+from models.schemas import RaceConfig, OptimizeResponse, TeamInfo, DriverInfo, Strategy, EmergencyPitAdvice
 from engine.optimizer import optimize
 from engine.monte_carlo import score_top_strategies
 from ai.race_engineer import generate_brief
@@ -89,6 +89,174 @@ def _get_driver_names(team_data: dict) -> list:
     return [d["name"] for d in team_data["drivers"].values()]
 
 
+def _rain_advice(config: RaceConfig) -> tuple[str, str]:
+    """Recommended compound and summary if it's raining when the driver has to pit in an emergency."""
+    rain_prob = getattr(config, "rain_probability", 0) or 0
+    if rain_prob >= 0.5:
+        return (
+            "WET",
+            "Take WET if standing water; otherwise INTERMEDIATE. Switch to dry compound when track dries.",
+        )
+    return (
+        "INTERMEDIATE",
+        "Take INTERMEDIATE (or WET if heavy rain). Switch to dry compound when track dries.",
+    )
+
+
+def _compute_emergency_advice(optimal: Strategy, config: RaceConfig) -> list[EmergencyPitAdvice]:
+    """
+    For each lap window *between* the recommended pit stops, recommend what to do
+    if the driver is forced to pit in that window (safety car, puncture, damage).
+    Always includes rain option: if it's raining when you pit, use INTERMEDIATE/WET.
+    """
+    advice: list[EmergencyPitAdvice] = []
+    stops = optimal.stops
+    total_laps = config.total_laps
+    compound_rain, summary_rain = _rain_advice(config)
+
+    # Build windows: before first stop, between stop 1 and 2, etc.
+    pit_laps = sorted([s.lap for s in stops])
+    compounds_by_lap = {s.lap: s.compound.value for s in stops}
+
+    # Window 1: laps 1 to (first pit - 1) — split early vs late so it doesn't always default to hard to the end
+    if pit_laps:
+        first_stop = pit_laps[0]
+        if first_stop > 1:
+            lap_end = first_stop - 1
+            c1 = compounds_by_lap.get(pit_laps[0], "MEDIUM")
+            is_one_stop = len(pit_laps) < 2
+
+            # Early in the window (many laps still to go): prefer MEDIUM + second stop instead of one long stint on HARD
+            early_cutoff = max(1, first_stop - 12)  # e.g. laps 1–5 for first_stop=18
+            if early_cutoff >= 1 and lap_end >= early_cutoff:
+                lap_range_early = f"1–{early_cutoff}"
+                if is_one_stop and c1 == "HARD":
+                    # 1-stop plan was HARD to the end; for early emergency pit, suggest 2 stops to avoid 50+ laps on HARD
+                    second_stop_lap = first_stop + (total_laps - first_stop) // 2
+                    advice.append(
+                        EmergencyPitAdvice(
+                            lap_range=lap_range_early,
+                            scenario="Safety car, puncture, or damage very early (before first planned stop)",
+                            compound="MEDIUM",
+                            summary=f"Take MEDIUM; then one more stop for HARD around lap {second_stop_lap} (2 stops total).",
+                            compound_if_rain=compound_rain,
+                            summary_if_rain=summary_rain,
+                        )
+                    )
+                elif is_one_stop:
+                    advice.append(
+                        EmergencyPitAdvice(
+                            lap_range=lap_range_early,
+                            scenario="Safety car, puncture, or damage very early (before first planned stop)",
+                            compound=c1,
+                            summary=f"Take {c1} and run to the end (1 stop total).",
+                            compound_if_rain=compound_rain,
+                            summary_if_rain=summary_rain,
+                        )
+                    )
+                else:
+                    c2 = compounds_by_lap.get(pit_laps[1], "HARD")
+                    advice.append(
+                        EmergencyPitAdvice(
+                            lap_range=lap_range_early,
+                            scenario="Safety car, puncture, or damage very early (before first planned stop)",
+                            compound=c1,
+                            summary=f"Take {c1}; then one more stop for {c2} around lap {pit_laps[1]} to rejoin plan.",
+                            compound_if_rain=compound_rain,
+                            summary_if_rain=summary_rain,
+                        )
+                    )
+
+            # Late in the window (close to planned first stop): take planned compound to the end or rejoin plan
+            late_start = early_cutoff + 1
+            if late_start <= lap_end:
+                lap_range_late = f"{late_start}–{lap_end}"
+                if is_one_stop:
+                    advice.append(
+                        EmergencyPitAdvice(
+                            lap_range=lap_range_late,
+                            scenario="Safety car, puncture, or damage shortly before your planned stop",
+                            compound=c1,
+                            summary=f"Take {c1} and run to the end (1 stop total).",
+                            compound_if_rain=compound_rain,
+                            summary_if_rain=summary_rain,
+                        )
+                    )
+                else:
+                    c2 = compounds_by_lap.get(pit_laps[1], "HARD")
+                    advice.append(
+                        EmergencyPitAdvice(
+                            lap_range=lap_range_late,
+                            scenario="Safety car, puncture, or damage shortly before your first planned stop",
+                            compound=c1,
+                            summary=f"Take {c1}; then one more stop for {c2} around lap {pit_laps[1]} to rejoin plan.",
+                            compound_if_rain=compound_rain,
+                            summary_if_rain=summary_rain,
+                        )
+                    )
+
+    # Window 2, 3, ...: between consecutive planned stops
+    for i in range(len(pit_laps) - 1):
+        start = pit_laps[i] + 1
+        end = pit_laps[i + 1] - 1
+        if start > end:
+            continue
+        lap_range = f"{start}–{end}"
+        # Recommend the next planned compound (what they'd take at the next stop), then to the end
+        next_compound = compounds_by_lap.get(pit_laps[i + 1], "HARD")
+        advice.append(
+            EmergencyPitAdvice(
+                lap_range=lap_range,
+                scenario="Safety car or unscheduled pit between your planned stops",
+                compound=next_compound,
+                summary=f"Take {next_compound} and run to the end (no more stops).",
+            )
+        )
+
+    # Window after last stop to end of race: unscheduled pit in final stint
+    if pit_laps:
+        last_stop = pit_laps[-1]
+        start = last_stop + 1
+        if start <= total_laps:
+            laps_in_window = total_laps - start + 1
+            # Final laps (e.g. last 12): recommend SOFT for max grip on short run to the flag
+            soft_cutoff = 12
+            if laps_in_window > soft_cutoff:
+                # Early/mid part of window: HARD or MEDIUM to the end
+                early_end = total_laps - soft_cutoff
+                lap_range_early = f"{start}–{early_end}"
+                if laps_in_window > 22:
+                    compound_early, summary_early = "HARD", "Take HARD and run to the end (no more stops)."
+                else:
+                    compound_early, summary_early = "MEDIUM", "Take MEDIUM and run to the end (no more stops)."
+                advice.append(
+                    EmergencyPitAdvice(
+                        lap_range=lap_range_early,
+                        scenario="Puncture or damage after your last planned stop (earlier in final stint)",
+                        compound=compound_early,
+                        summary=summary_early,
+                        compound_if_rain=compound_rain,
+                        summary_if_rain=summary_rain,
+                    )
+                )
+            # Range at the end of the race: switch to SOFT for the short run to the flag
+            end_range_start = max(start, total_laps - soft_cutoff + 1)
+            if end_range_start <= total_laps:
+                lap_range_end = f"{end_range_start}–{total_laps}"
+                advice.append(
+                    EmergencyPitAdvice(
+                        lap_range=lap_range_end,
+                        scenario="Puncture or damage in the final laps after your last planned stop",
+                        compound="SOFT",
+                        summary="Take SOFT to the end; maximum grip for the short run to the flag (no more stops).",
+                        compound_if_rain=compound_rain,
+                        summary_if_rain=summary_rain,
+                    )
+                )
+
+    return advice
+
+
 @app.get("/")
 def root():
     """Root endpoint"""
@@ -120,6 +288,8 @@ def get_tracks():
             "race_month": data.get("race_month", 6),
             "historical_rain_pct": data.get("historical_rain_pct", 0.15),
             "rain_intensity": data.get("rain_intensity", "moderate"),
+            "historical_safety_car_pct": data.get("historical_safety_car_pct", 0.2),
+            "recommended_start_compound": data.get("recommended_start_compound", "SOFT"),
         })
     return {"tracks": tracks_list}
 
@@ -214,6 +384,11 @@ def run_optimization(config: RaceConfig):
         rain_pct = config.rain_probability * 100
         rain_int = track_weather.get("rain_intensity", "moderate")
         
+        # Use track's historical safety car probability (overrides client value)
+        historical_sc = track_weather.get("historical_safety_car_pct")
+        if historical_sc is not None:
+            config = config.model_copy(update={"safety_car_probability": historical_sc})
+        
         # Get team data if specified
         team_data = None
         team_info = None
@@ -276,14 +451,20 @@ def run_optimization(config: RaceConfig):
             selected_driver=selected_driver_name,
             driver_traits=driver_data,
         )
+
+        # Emergency / contingency pit advice for windows between recommended stops
+        emergency_advice = _compute_emergency_advice(optimal_strategy, config)
+        print(f"  Emergency advice: {len(emergency_advice)} contingency windows")
+
         print("  Optimization complete!")
-        
+
         return OptimizeResponse(
             strategies=strategies,
             ai_brief=brief,
             config=config,
             team_info=team_info,
             driver_info=driver_info,
+            emergency_advice=emergency_advice,
         )
     
     except HTTPException:

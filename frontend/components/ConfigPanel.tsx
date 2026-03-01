@@ -39,12 +39,14 @@ export default function ConfigPanel({ onOptimize, isLoading }: ConfigPanelProps)
   useEffect(() => {
     getTracks().then((trackList) => {
       setTracks(trackList);
-      // Auto-set rain for initial track
+      // Auto-set rain, safety car, and recommended starting compound for initial track
       const initial = trackList.find(t => t.id === 'australia');
       if (initial) {
         setConfig(prev => ({
           ...prev,
           rain_probability: initial.historical_rain_pct,
+          safety_car_probability: initial.historical_safety_car_pct ?? 0.2,
+          starting_compound: (initial.recommended_start_compound ?? 'MEDIUM') as RaceConfig['starting_compound'],
         }));
       }
     }).catch(console.error);
@@ -223,12 +225,14 @@ export default function ConfigPanel({ onOptimize, isLoading }: ConfigPanelProps)
             onChange={(e) => {
               const trackId = e.target.value;
               const trackInfo = tracks.find(t => t.id === trackId);
+              const recommended = trackInfo?.recommended_start_compound ?? 'SOFT';
               setConfig({ 
                 ...config, 
                 track: trackId,
                 total_laps: trackInfo?.laps || 57,
-                // Auto-set rain probability from historical data for this track
                 rain_probability: trackInfo?.historical_rain_pct ?? 0.15,
+                safety_car_probability: trackInfo?.historical_safety_car_pct ?? 0.2,
+                starting_compound: recommended as RaceConfig['starting_compound'],
               });
             }}
             className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
@@ -255,6 +259,11 @@ export default function ConfigPanel({ onOptimize, isLoading }: ConfigPanelProps)
         <div>
           <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
             Starting Compound
+            {selectedTrack?.recommended_start_compound && (
+              <span className="ml-2 text-xs font-normal text-emerald-600 dark:text-emerald-400">
+                (Recommended for {selectedTrack.name}: {selectedTrack.recommended_start_compound})
+              </span>
+            )}
           </label>
           {/* Dry compounds */}
           <div className="flex gap-2 mb-2">
@@ -323,23 +332,6 @@ export default function ConfigPanel({ onOptimize, isLoading }: ConfigPanelProps)
               {Math.round(500 * config.rain_probability)} of 500 Monte Carlo sims will have rain
             </p>
           )}
-        </div>
-
-        {/* Safety Car Probability */}
-        <div>
-          <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
-            Safety Car Probability: {(config.safety_car_probability * 100).toFixed(0)}%
-          </label>
-          <input
-            type="range"
-            min="0"
-            max="100"
-            value={config.safety_car_probability * 100}
-            onChange={(e) =>
-              setConfig({ ...config, safety_car_probability: Number(e.target.value) / 100 })
-            }
-            className="w-full"
-          />
         </div>
 
         {/* Submit Button */}

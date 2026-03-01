@@ -52,12 +52,22 @@ export interface TeamInfo {
   drivers: Record<string, DriverInfo>;
 }
 
+export interface EmergencyPitAdvice {
+  lap_range: string;
+  scenario: string;
+  compound: string;
+  summary: string;
+  compound_if_rain?: string | null;
+  summary_if_rain?: string | null;
+}
+
 export interface OptimizeResponse {
   strategies: Strategy[];
   ai_brief: string;
   config: RaceConfig;
   team_info?: TeamInfo | null;
   driver_info?: DriverInfo | null;
+  emergency_advice?: EmergencyPitAdvice[] | null;
 }
 
 export interface TestingCompoundData {
@@ -98,6 +108,8 @@ export interface TrackInfo {
   race_month: number;
   historical_rain_pct: number;
   rain_intensity: 'light' | 'moderate' | 'heavy';
+  historical_safety_car_pct: number;
+  recommended_start_compound?: 'SOFT' | 'MEDIUM' | 'HARD';
 }
 
 const MONTH_NAMES = [

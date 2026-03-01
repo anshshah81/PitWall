@@ -35,7 +35,12 @@ REFINEMENT_STEPS = [4, 2, 1]  # Progressively finer search (lap offsets)
 
 # ─── Compound Sets ───────────────────────────────────────────────────────────
 DRY_COMPOUNDS = [TireCompound.SOFT, TireCompound.MEDIUM, TireCompound.HARD]
+DRY_COMPOUNDS_SET = set(DRY_COMPOUNDS)
 WET_COMPOUNDS = [TireCompound.INTERMEDIATE, TireCompound.WET]
+
+# F1 tire allocation default (sets per compound per weekend; used if track has no override)
+DEFAULT_TIRE_ALLOCATION = {"SOFT": 8, "MEDIUM": 3, "HARD": 2}
+MONACO_TRACK_ID = "monaco"
 ALL_COMPOUNDS = DRY_COMPOUNDS + WET_COMPOUNDS
 
 
@@ -100,19 +105,63 @@ def _fmt_strategy(stops: List[PitStop], time: float = None) -> str:
     return label
 
 
-def _is_valid_strategy(stops: List[PitStop], total_laps: int) -> bool:
-    """Check that a strategy has valid lap ordering and spacing."""
+def _satisfies_f1_tire_rules(
+    stops: List[PitStop],
+    config: RaceConfig,
+    track_data: dict,
+) -> bool:
+    """
+    F1 sporting rules:
+    - Dry race: must use at least two different dry compounds.
+    - Monaco (dry): must make at least two pit stops (use at least three sets).
+    - Allocation: sets used per compound must not exceed weekend allocation.
+    """
+    compounds_used = [config.starting_compound] + [s.compound for s in stops]
+    has_wet = any(c in WET_COMPOUNDS for c in compounds_used)
+    dry_used = [c for c in compounds_used if c in DRY_COMPOUNDS_SET]
+
+    # Dry race: require at least two different dry compounds
+    if not has_wet and dry_used:
+        if len(set(dry_used)) < 2:
+            return False
+
+    # Monaco dry: mandatory two stops (at least three sets)
+    if config.track == MONACO_TRACK_ID and not has_wet:
+        if len(stops) < 2:
+            return False
+
+    # Set allocation: count sets used per dry compound, check against allocation
+    allocation = track_data.get("tire_allocation") or DEFAULT_TIRE_ALLOCATION
+    used = {"SOFT": 0, "MEDIUM": 0, "HARD": 0}
+    if config.starting_compound in DRY_COMPOUNDS_SET:
+        used[config.starting_compound.value] = 1
+    for s in stops:
+        if s.compound in DRY_COMPOUNDS_SET:
+            used[s.compound.value] = used.get(s.compound.value, 0) + 1
+    for comp in ("SOFT", "MEDIUM", "HARD"):
+        if used.get(comp, 0) > allocation.get(comp, 99):
+            return False
+    return True
+
+
+def _is_valid_strategy(
+    stops: List[PitStop],
+    total_laps: int,
+    config: RaceConfig,
+    track_data: Optional[dict] = None,
+) -> bool:
+    """Check lap ordering/spacing and F1 tire rules (two compounds, Monaco two-stop, allocation)."""
     laps = [s.lap for s in stops]
-    # All pit laps within bounds
     if any(l < MIN_STINT_LAPS or l > total_laps - MIN_STINT_LAPS for l in laps):
         return False
-    # Monotonically increasing
     if laps != sorted(laps):
         return False
-    # Minimum spacing between stops
     for i in range(len(laps) - 1):
         if laps[i + 1] - laps[i] < MIN_STINT_LAPS:
             return False
+    track_data = track_data or {}
+    if not _satisfies_f1_tire_rules(stops, config, track_data):
+        return False
     return True
 
 
@@ -123,34 +172,35 @@ def generate_extreme_seeds(config: RaceConfig) -> List[List[PitStop]]:
     Covers the full strategy space by placing pit stops at wide-spread
     positions: very early, early, midpoint, late, very late.
     Both 1-stop and 2-stop strategies are seeded.
-    
-    This is the "start in opposite directions" part — we begin with
-    the most diverse possible set of strategies before converging.
+    Only strategies that satisfy F1 tire rules (two compounds, Monaco two-stop, allocation) are included.
     """
     compounds = get_available_compounds(config)
     total = config.total_laps
+    track_data = _TRACKS.get(config.track, {})
     seeds: List[List[PitStop]] = []
     seen: Set[Tuple] = set()
-    
+
     def add_if_valid(stops: List[PitStop]):
-        if not _is_valid_strategy(stops, total):
+        if not _is_valid_strategy(stops, total, config, track_data):
             return
         key = _strategy_key(stops)
         if key not in seen:
             seen.add(key)
             seeds.append(stops)
-    
+
     # ── 1-Stop Seeds ──────────────────────────────────────────────────────
     # Spread across race distance: 15% to 85% in 6 positions
+    # 1-stop: must use two compounds (start != pit compound) — already enforced by c != config.starting_compound
     pct_1stop = [0.15, 0.25, 0.35, 0.50, 0.65, 0.75, 0.85]
     for pct in pct_1stop:
         pit_lap = int(total * pct)
         for c in compounds:
             if c != config.starting_compound:
                 add_if_valid([PitStop(lap=pit_lap, compound=c)])
-    
+
     # ── 2-Stop Seeds ─────────────────────────────────────────────────────
     # Combinations of early/mid/late for each stop (covers opposite extremes)
+    # F1 rule: at least two different dry compounds; Monaco requires two stops (always true here)
     pct_2stop = [0.18, 0.30, 0.42, 0.55, 0.68, 0.80]
     for i, p1_pct in enumerate(pct_2stop[:-1]):
         for p2_pct in pct_2stop[i + 1:]:
@@ -162,7 +212,7 @@ def generate_extreme_seeds(config: RaceConfig) -> List[List[PitStop]]:
                         PitStop(lap=p1, compound=c1),
                         PitStop(lap=p2, compound=c2),
                     ])
-    
+
     return seeds
 
 
@@ -171,39 +221,31 @@ def generate_neighbors(
     step: int,
     total_laps: int,
     existing_keys: Set[Tuple],
+    config: RaceConfig,
+    track_data: Optional[dict] = None,
 ) -> List[List[PitStop]]:
     """
     Generate neighbor strategies by shifting each pit stop ±step laps.
-    
-    Only produces strategies not already in the existing set (deduplication).
-    
-    Args:
-        top_strategies: Current best (stops, time) tuples
-        step: Lap offset to try (e.g. ±4, ±2, ±1)
-        total_laps: Total race laps (for bounds checking)
-        existing_keys: Set of already-evaluated strategy keys
-    
-    Returns:
-        List of new neighbor strategies to evaluate
+    Only produces strategies that satisfy F1 tire rules and are not already evaluated.
     """
+    track_data = track_data or {}
     neighbors: List[List[PitStop]] = []
-    
+
     for stops, _ in top_strategies:
         for i in range(len(stops)):
             for offset in [-step, step]:
                 new_lap = stops[i].lap + offset
-                # Create modified strategy
                 new_stops = list(stops)
                 new_stops[i] = PitStop(lap=new_lap, compound=stops[i].compound)
-                
-                if not _is_valid_strategy(new_stops, total_laps):
+
+                if not _is_valid_strategy(new_stops, total_laps, config, track_data):
                     continue
-                
+
                 key = _strategy_key(new_stops)
                 if key not in existing_keys:
                     existing_keys.add(key)
                     neighbors.append(new_stops)
-    
+
     return neighbors
 
 
@@ -263,9 +305,12 @@ def _run_beam_search(
     
     print(f"{prefix}Seeds: {len(seeds)} strategies, best = {_fmt_strategy(results[0][0], results[0][1])}")
     
+    track_data = _TRACKS.get(config.track, {})
     for step in REFINEMENT_STEPS:
         top = results[:BEAM_WIDTH]
-        neighbors = generate_neighbors(top, step, config.total_laps, all_keys)
+        neighbors = generate_neighbors(
+            top, step, config.total_laps, all_keys, config, track_data
+        )
         if neighbors:
             neighbor_results = evaluate(neighbors)
             combined = results + neighbor_results

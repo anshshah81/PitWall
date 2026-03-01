@@ -69,6 +69,16 @@ class TeamInfo(BaseModel):
     drivers: Dict[str, DriverInfo]      # driver_id -> DriverInfo
 
 
+class EmergencyPitAdvice(BaseModel):
+    """Contingency pit advice for a lap window (e.g. safety car or puncture between planned stops)"""
+    lap_range: str                      # e.g. "1–17"
+    scenario: str                       # e.g. "Safety car or early pit"
+    compound: str                       # Recommended compound (SOFT, MEDIUM, HARD)
+    summary: str                        # What to do next (e.g. "One more stop for HARD around lap 35")
+    compound_if_rain: Optional[str] = None   # If raining: INTERMEDIATE or WET
+    summary_if_rain: Optional[str] = None    # What to do if it's raining when you pit in this window
+
+
 class OptimizeResponse(BaseModel):
     """API response from /optimize endpoint"""
     strategies: List[Strategy]          # Top 20 strategies (tagged: OPTIMAL, VARIABLE)
@@ -76,3 +86,4 @@ class OptimizeResponse(BaseModel):
     config: RaceConfig                  # Echo back the config
     team_info: Optional[TeamInfo] = None  # Team data if team was selected
     driver_info: Optional[DriverInfo] = None  # Driver data if driver was selected
+    emergency_advice: Optional[List[EmergencyPitAdvice]] = None  # Contingency strategies between planned stops

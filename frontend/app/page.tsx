@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import ConfigPanel from '@/components/ConfigPanel';
 import AIBrief from '@/components/AIBrief';
+import EmergencyStrategies from '@/components/EmergencyStrategies';
 import StrategyChart from '@/components/StrategyChart';
 import ComparisonTable from '@/components/ComparisonTable';
 import RobustnessChart from '@/components/RobustnessChart';
@@ -153,6 +154,9 @@ export default function Home() {
 
             {/* Comparison Table */}
             <ComparisonTable strategies={result.strategies} />
+
+            {/* Emergency / contingency pit strategies */}
+            <EmergencyStrategies advice={result?.emergency_advice} />
 
             {/* Robustness Chart */}
             <RobustnessChart strategies={result.strategies} />

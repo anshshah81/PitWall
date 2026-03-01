@@ -3,13 +3,15 @@
     "name": "Australian Grand Prix",
     "circuit": "Albert Park Circuit",
     "lat": -37.8497,
-    "lon": 144.9680,
+    "lon": 144.968,
     "laps": 58,
-    "pit_loss": 21.0,
+    "pit_loss": 21,
     "base_lap_time": 79.5,
     "race_month": 3,
     "historical_rain_pct": 0.15,
-    "rain_intensity": "moderate"
+    "rain_intensity": "moderate",
+    "historical_safety_car_pct": 0.40,
+    "recommended_start_compound": "MEDIUM"
   },
   "china": {
     "name": "Chinese Grand Prix",
@@ -18,10 +20,12 @@
     "lon": 121.2197,
     "laps": 56,
     "pit_loss": 22.5,
-    "base_lap_time": 96.0,
+    "base_lap_time": 96,
     "race_month": 4,
-    "historical_rain_pct": 0.30,
-    "rain_intensity": "moderate"
+    "historical_rain_pct": 0.3,
+    "rain_intensity": "moderate",
+    "historical_safety_car_pct": 0.35,
+    "recommended_start_compound": "MEDIUM"
   },
   "japan": {
     "name": "Japanese Grand Prix",
@@ -29,11 +33,13 @@
     "lat": 34.8431,
     "lon": 136.5407,
     "laps": 53,
-    "pit_loss": 22.0,
+    "pit_loss": 22,
     "base_lap_time": 91.5,
     "race_month": 4,
     "historical_rain_pct": 0.25,
-    "rain_intensity": "moderate"
+    "rain_intensity": "moderate",
+    "historical_safety_car_pct": 0.30,
+    "recommended_start_compound": "MEDIUM"
   },
   "bahrain": {
     "name": "Bahrain Grand Prix",
@@ -41,11 +47,14 @@
     "lat": 26.0325,
     "lon": 50.5106,
     "laps": 57,
-    "pit_loss": 22.0,
+    "pit_loss": 22,
     "base_lap_time": 93.5,
     "race_month": 4,
     "historical_rain_pct": 0.02,
-    "rain_intensity": "light"
+    "rain_intensity": "light",
+    "historical_safety_car_pct": 0.14,
+    "tire_allocation": { "SOFT": 8, "MEDIUM": 3, "HARD": 2 },
+    "recommended_start_compound": "SOFT"
   },
   "saudi_arabia": {
     "name": "Saudi Arabian Grand Prix",
@@ -54,10 +63,12 @@
     "lon": 39.1044,
     "laps": 50,
     "pit_loss": 21.5,
-    "base_lap_time": 89.0,
+    "base_lap_time": 89,
     "race_month": 5,
     "historical_rain_pct": 0.01,
-    "rain_intensity": "light"
+    "rain_intensity": "light",
+    "historical_safety_car_pct": 0.50,
+    "recommended_start_compound": "SOFT"
   },
   "miami": {
     "name": "Miami Grand Prix",
@@ -69,7 +80,9 @@
     "base_lap_time": 90.5,
     "race_month": 5,
     "historical_rain_pct": 0.35,
-    "rain_intensity": "heavy"
+    "rain_intensity": "heavy",
+    "historical_safety_car_pct": 0.45,
+    "recommended_start_compound": "SOFT"
   },
   "emilia_romagna": {
     "name": "Emilia Romagna Grand Prix",
@@ -77,11 +90,13 @@
     "lat": 44.3439,
     "lon": 11.7167,
     "laps": 63,
-    "pit_loss": 22.0,
+    "pit_loss": 22,
     "base_lap_time": 77.5,
     "race_month": 5,
-    "historical_rain_pct": 0.20,
-    "rain_intensity": "moderate"
+    "historical_rain_pct": 0.2,
+    "rain_intensity": "moderate",
+    "historical_safety_car_pct": 0.35,
+    "recommended_start_compound": "MEDIUM"
   },
   "monaco": {
     "name": "Monaco Grand Prix",
@@ -89,35 +104,41 @@
     "lat": 43.7347,
     "lon": 7.4205,
     "laps": 78,
-    "pit_loss": 27.0,
-    "base_lap_time": 74.0,
+    "pit_loss": 27,
+    "base_lap_time": 74,
     "race_month": 6,
-    "historical_rain_pct": 0.10,
-    "rain_intensity": "light"
+    "historical_rain_pct": 0.1,
+    "rain_intensity": "light",
+    "historical_safety_car_pct": 0.90,
+    "recommended_start_compound": "SOFT"
   },
   "spain": {
     "name": "Spanish Grand Prix",
     "circuit": "Circuit de Barcelona-Catalunya",
-    "lat": 41.5700,
+    "lat": 41.57,
     "lon": 2.2611,
     "laps": 66,
     "pit_loss": 20.5,
-    "base_lap_time": 82.0,
+    "base_lap_time": 82,
     "race_month": 6,
     "historical_rain_pct": 0.08,
-    "rain_intensity": "light"
+    "rain_intensity": "light",
+    "historical_safety_car_pct": 0.25,
+    "recommended_start_compound": "MEDIUM"
   },
   "canada": {
     "name": "Canadian Grand Prix",
     "circuit": "Circuit Gilles Villeneuve",
-    "lat": 45.5000,
+    "lat": 45.5,
     "lon": -73.5228,
     "laps": 70,
-    "pit_loss": 22.0,
+    "pit_loss": 22,
     "base_lap_time": 75.5,
     "race_month": 6,
     "historical_rain_pct": 0.25,
-    "rain_intensity": "moderate"
+    "rain_intensity": "moderate",
+    "historical_safety_car_pct": 0.85,
+    "recommended_start_compound": "MEDIUM"
   },
   "austria": {
     "name": "Austrian Grand Prix",
@@ -125,11 +146,13 @@
     "lat": 47.2197,
     "lon": 14.7647,
     "laps": 71,
-    "pit_loss": 20.0,
+    "pit_loss": 20,
     "base_lap_time": 67.5,
     "race_month": 7,
-    "historical_rain_pct": 0.30,
-    "rain_intensity": "moderate"
+    "historical_rain_pct": 0.3,
+    "rain_intensity": "moderate",
+    "historical_safety_car_pct": 0.30,
+    "recommended_start_compound": "SOFT"
   },
   "silverstone": {
     "name": "British Grand Prix",
@@ -137,11 +160,13 @@
     "lat": 52.0786,
     "lon": -1.0169,
     "laps": 52,
-    "pit_loss": 21.0,
-    "base_lap_time": 90.0,
+    "pit_loss": 21,
+    "base_lap_time": 90,
     "race_month": 7,
     "historical_rain_pct": 0.35,
-    "rain_intensity": "moderate"
+    "rain_intensity": "moderate",
+    "historical_safety_car_pct": 0.35,
+    "recommended_start_compound": "MEDIUM"
   },
   "hungary": {
     "name": "Hungarian Grand Prix",
@@ -150,10 +175,11 @@
     "lon": 19.2486,
     "laps": 70,
     "pit_loss": 21.5,
-    "base_lap_time": 79.0,
+    "base_lap_time": 79,
     "race_month": 8,
-    "historical_rain_pct": 0.20,
-    "rain_intensity": "moderate"
+    "historical_rain_pct": 0.2,
+    "rain_intensity": "moderate",
+    "historical_safety_car_pct": 0.20
   },
   "belgium": {
     "name": "Belgian Grand Prix",
@@ -161,11 +187,13 @@
     "lat": 50.4372,
     "lon": 5.9714,
     "laps": 44,
-    "pit_loss": 22.0,
-    "base_lap_time": 106.0,
+    "pit_loss": 22,
+    "base_lap_time": 106,
     "race_month": 8,
     "historical_rain_pct": 0.45,
-    "rain_intensity": "heavy"
+    "rain_intensity": "heavy",
+    "historical_safety_car_pct": 0.45,
+    "recommended_start_compound": "MEDIUM"
   },
   "netherlands": {
     "name": "Dutch Grand Prix",
@@ -173,11 +201,13 @@
     "lat": 52.3888,
     "lon": 4.5408,
     "laps": 72,
-    "pit_loss": 19.0,
-    "base_lap_time": 73.0,
+    "pit_loss": 19,
+    "base_lap_time": 73,
     "race_month": 9,
-    "historical_rain_pct": 0.30,
-    "rain_intensity": "moderate"
+    "historical_rain_pct": 0.3,
+    "rain_intensity": "moderate",
+    "historical_safety_car_pct": 0.30,
+    "recommended_start_compound": "MEDIUM"
   },
   "monza": {
     "name": "Italian Grand Prix",
@@ -185,11 +215,12 @@
     "lat": 45.6156,
     "lon": 9.2811,
     "laps": 53,
-    "pit_loss": 23.0,
+    "pit_loss": 23,
     "base_lap_time": 81.5,
     "race_month": 9,
-    "historical_rain_pct": 0.20,
-    "rain_intensity": "moderate"
+    "historical_rain_pct": 0.2,
+    "rain_intensity": "moderate",
+    "historical_safety_car_pct": 0.25
   },
   "azerbaijan": {
     "name": "Azerbaijan Grand Prix",
@@ -198,10 +229,12 @@
     "lon": 49.8533,
     "laps": 51,
     "pit_loss": 24.5,
-    "base_lap_time": 103.0,
+    "base_lap_time": 103,
     "race_month": 9,
-    "historical_rain_pct": 0.10,
-    "rain_intensity": "light"
+    "historical_rain_pct": 0.1,
+    "rain_intensity": "light",
+    "historical_safety_car_pct": 0.95,
+    "recommended_start_compound": "SOFT"
   },
   "singapore": {
     "name": "Singapore Grand Prix",
@@ -209,11 +242,13 @@
     "lat": 1.2914,
     "lon": 103.8639,
     "laps": 62,
-    "pit_loss": 25.0,
-    "base_lap_time": 99.0,
+    "pit_loss": 25,
+    "base_lap_time": 99,
     "race_month": 10,
-    "historical_rain_pct": 0.50,
-    "rain_intensity": "heavy"
+    "historical_rain_pct": 0.5,
+    "rain_intensity": "heavy",
+    "historical_safety_car_pct": 1.0,
+    "recommended_start_compound": "SOFT"
   },
   "usa": {
     "name": "United States Grand Prix",
@@ -221,11 +256,13 @@
     "lat": 30.1328,
     "lon": -97.6411,
     "laps": 56,
-    "pit_loss": 22.0,
+    "pit_loss": 22,
     "base_lap_time": 96.5,
     "race_month": 10,
-    "historical_rain_pct": 0.20,
-    "rain_intensity": "moderate"
+    "historical_rain_pct": 0.2,
+    "rain_intensity": "moderate",
+    "historical_safety_car_pct": 0.30,
+    "recommended_start_compound": "MEDIUM"
   },
   "mexico": {
     "name": "Mexican Grand Prix",
@@ -233,11 +270,13 @@
     "lat": 19.4042,
     "lon": -99.0907,
     "laps": 71,
-    "pit_loss": 21.0,
+    "pit_loss": 21,
     "base_lap_time": 78.5,
     "race_month": 10,
-    "historical_rain_pct": 0.20,
-    "rain_intensity": "moderate"
+    "historical_rain_pct": 0.2,
+    "rain_intensity": "moderate",
+    "historical_safety_car_pct": 0.35,
+    "recommended_start_compound": "MEDIUM"
   },
   "brazil": {
     "name": "Brazilian Grand Prix",
@@ -248,8 +287,10 @@
     "pit_loss": 20.5,
     "base_lap_time": 72.5,
     "race_month": 11,
-    "historical_rain_pct": 0.40,
-    "rain_intensity": "heavy"
+    "historical_rain_pct": 0.4,
+    "rain_intensity": "heavy",
+    "historical_safety_car_pct": 0.40,
+    "recommended_start_compound": "MEDIUM"
   },
   "las_vegas": {
     "name": "Las Vegas Grand Prix",
@@ -258,22 +299,25 @@
     "lon": -115.1745,
     "laps": 50,
     "pit_loss": 23.5,
-    "base_lap_time": 95.0,
+    "base_lap_time": 95,
     "race_month": 11,
     "historical_rain_pct": 0.05,
-    "rain_intensity": "light"
+    "rain_intensity": "light",
+    "historical_safety_car_pct": 0.50,
+    "recommended_start_compound": "SOFT"
   },
   "qatar": {
     "name": "Qatar Grand Prix",
     "circuit": "Lusail International Circuit",
-    "lat": 25.4900,
+    "lat": 25.49,
     "lon": 51.4542,
     "laps": 57,
-    "pit_loss": 21.0,
-    "base_lap_time": 85.0,
+    "pit_loss": 21,
+    "base_lap_time": 85,
     "race_month": 11,
     "historical_rain_pct": 0.03,
-    "rain_intensity": "light"
+    "rain_intensity": "light",
+    "historical_safety_car_pct": 0.20
   },
   "abu_dhabi": {
     "name": "Abu Dhabi Grand Prix",
@@ -281,10 +325,12 @@
     "lat": 24.4672,
     "lon": 54.6031,
     "laps": 58,
-    "pit_loss": 22.0,
+    "pit_loss": 22,
     "base_lap_time": 87.5,
     "race_month": 12,
     "historical_rain_pct": 0.02,
-    "rain_intensity": "light"
+    "rain_intensity": "light",
+    "historical_safety_car_pct": 0.25,
+    "recommended_start_compound": "SOFT"
   }
 }
